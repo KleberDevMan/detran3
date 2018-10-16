@@ -12,14 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author KLEBER
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Usuario2.autentica", query = "SELECT u FROM Usuario2 u WHERE u.usuario = :usuario and u.senha = :senha and u.tipoUsuario = :tipo")})
 public class Usuario2 implements Serializable {
 
     private static final long serialVersionUID = 1L;

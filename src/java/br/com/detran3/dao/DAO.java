@@ -1,8 +1,8 @@
 package br.com.detran3.dao;
 
-import br.com.detran3.model.Administrador;
-import br.com.detran3.model.Colaborador;
-import br.com.detran3.model.Usuario;
+import br.com.detran3.enuns.TipoUsuario;
+import br.com.detran3.enuns.VariaveisSessao;
+import br.com.detran3.model.Usuario2;
 import br.com.detran3.model.Veiculo;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -115,55 +115,55 @@ public class DAO<T> {
         return result;
 
     }
-    public Colaborador autenticarColaborador(String usuario, String senha) {
-
-        EntityManager em = new JPAUtil().getEntityManager();
-
-        Colaborador c = null;
-        Usuario user = null;
-        
-        try {
-            user = (Usuario) em.createNamedQuery("Usuario.findByUsuarioSenha", Usuario.class)
-                    .setParameter("usuario", usuario).setParameter("senha", senha)
-                    .getSingleResult();
-        } catch (Exception e) {
-            System.out.println("erro: colaborador nao encontrado");
-        }
-
-        em.close();
-        
-        if (user != null) {
-            c = new Colaborador();
-            c.setUsuarioidUsuario(user);
-        }
-
-        return c;
-    }
-    
-    public Administrador autenticarAdministrador(String usuario, String senha) {
-
-        EntityManager em = new JPAUtil().getEntityManager();
-
-        Administrador adm = null;
-        Usuario user = null;
-        
-        try {
-            user = (Usuario) em.createNamedQuery("Usuario.findByUsuarioSenha", Usuario.class)
-                    .setParameter("usuario", usuario).setParameter("senha", senha)
-                    .getSingleResult();
-        } catch (Exception e) {
-            System.out.println("erro: administrador nao encontrado");
-        }
-
-        em.close();
-        
-        if (user != null) {
-            adm = new Administrador();
-            adm.setUsuarioidUsuario(user);
-        }
-
-        return adm;
-    }
+//    public Colaborador autenticarColaborador(String usuario, String senha) {
+//
+//        EntityManager em = new JPAUtil().getEntityManager();
+//
+//        Colaborador c = null;
+//        Usuario user = null;
+//        
+//        try {
+//            user = (Usuario) em.createNamedQuery("Usuario.findByUsuarioSenha", Usuario.class)
+//                    .setParameter("usuario", usuario).setParameter("senha", senha)
+//                    .getSingleResult();
+//        } catch (Exception e) {
+//            System.out.println("erro: colaborador nao encontrado");
+//        }
+//
+//        em.close();
+//        
+//        if (user != null) {
+//            c = new Colaborador();
+//            c.setUsuarioidUsuario(user);
+//        }
+//
+//        return c;
+//    }
+//    
+//    public Administrador autenticarAdministrador(String usuario, String senha) {
+//
+//        EntityManager em = new JPAUtil().getEntityManager();
+//
+//        Administrador adm = null;
+//        Usuario user = null;
+//        
+//        try {
+//            user = (Usuario) em.createNamedQuery("Usuario.findByUsuarioSenha", Usuario.class)
+//                    .setParameter("usuario", usuario).setParameter("senha", senha)
+//                    .getSingleResult();
+//        } catch (Exception e) {
+//            System.out.println("erro: administrador nao encontrado");
+//        }
+//
+//        em.close();
+//        
+//        if (user != null) {
+//            adm = new Administrador();
+//            adm.setUsuarioidUsuario(user);
+//        }
+//
+//        return adm;
+//    }
 
 //    public T autenticarAdminstrador(String usuario, String senha) {
 //
@@ -197,4 +197,44 @@ public class DAO<T> {
 //        return servidores.get(0);
 //    }
 //    
+
+//    public Usuario2 autenticarUsuarioAdm(String usuario, String senha) {
+//        EntityManager em = new JPAUtil().getEntityManager();
+//      
+//        Usuario2 user = null;
+//        
+//        try {
+//            user = (Usuario2) em.createNamedQuery("Usuario2.autentica", Usuario2.class)
+//                    .setParameter("usuario", usuario)
+//                    .setParameter("senha", senha)
+//                    .setParameter("tipo", TipoUsuario.ADM)
+//                    .getSingleResult();
+//        } catch (Exception e) {
+//            System.out.println("erro: "+e);
+//        }
+//
+//        em.close();
+//        
+//        return user;
+//    }
+
+    public Usuario2 autenticar(String usuario, String senha, TipoUsuario tipo) {
+        EntityManager em = new JPAUtil().getEntityManager();
+      
+        Usuario2 user = null;
+        
+        try {
+            user = (Usuario2) em.createNamedQuery("Usuario2.autentica", Usuario2.class)
+                    .setParameter("usuario", usuario)
+                    .setParameter("senha", senha)
+                    .setParameter("tipo", tipo)
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println("erro: "+e);
+        }
+
+        em.close();
+        
+        return user;
+    }
 }

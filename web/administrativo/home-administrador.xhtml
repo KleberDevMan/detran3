@@ -6,23 +6,43 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <center>
-            Home colaborador
-            
-<!--            <div align="right">
-                <h:form>
-                    <p>
-                        {homeAdmBean.administrador.usuarioidUsuario.usuario} <h:commandButton value="sair" action="#{homeAdmBean.sair()}" />
-                    </p>
-                </h:form>
-            </div>-->
-        </center>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    </body>
+    <ui:composition template="/templates/_adm_template.xhtml">
+        <ui:define name="body">
+            <center>Home administrador</center>
+
+            <b:dataTable value="#{homeAdmBean.administradores}" var="adm">
+                <b:dataTableColumn value="#{adm.usuario}" order="asc" />
+                <b:dataTableColumn value="#{adm.senha}" />
+                <b:dataTableColumn value="#{adm.senha}" />
+            </b:dataTable>
+            <b:button onclick="$('.formValidationModalClass').modal('show')" value="Novo"/>
+            <b:modal title="Novo administrador" styleClass="formValidationModalClass"
+                     closable="false"
+                     closeOnEscape="true">
+                <b:form>
+                    <b:inputText value="#{homeAdmBean.novoAdm.usuario}" placeholder="Usuario"  />
+                    <b:inputText value="#{homeAdmBean.novoAdm.senha}" placeholder="Senha" />
+
+                    <b:row>
+                        <b:column>
+                            <b:button largeScreen="half"  value="Cancel"
+                                      dismiss="modal" onclick="return false;"/>
+                            <b:commandButton largeScreen="half" update="@form"
+                                             value="Save" look="success"
+                                             action="#{homeAdmBean.salvar()}"
+                                             oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
+                        </b:column>
+                    </b:row>
+                    <b:fetchBeanInfos />
+                    <b:messages />
+                </b:form>
+            </b:modal>
+
+        </ui:define>
+    </ui:composition>
+
 </html>

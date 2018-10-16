@@ -19,9 +19,9 @@ and open the template in the editor.
                 <fieldset>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Usuario" />
-                        <h:inputText value="#{loginAdmBean.administrador.usuarioidUsuario.usuario}"  />
+                        <h:inputText value="#{loginAdmBean.administrador.usuario}"  />
                         <h:outputLabel value="Senha" />
-                        <h:inputText value="#{loginAdmBean.administrador.usuarioidUsuario.senha}" />
+                        <h:inputText value="#{loginAdmBean.administrador.senha}" />
                         <h:commandButton value="Buscar" action="#{loginAdmBean.autenticarAdministrador()}"/>
                     </h:panelGrid>
                 </fieldset>

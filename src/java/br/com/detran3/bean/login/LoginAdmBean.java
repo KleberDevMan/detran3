@@ -2,8 +2,9 @@ package br.com.detran3.bean.login;
 
 import br.com.detran3.bean.AbstractBean;
 import br.com.detran3.dao.DAO;
+import br.com.detran3.enuns.TipoUsuario;
 import br.com.detran3.enuns.VariaveisSessao;
-import br.com.detran3.model.Administrador;
+import br.com.detran3.model.Usuario2;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -16,23 +17,23 @@ import javax.faces.bean.RequestScoped;
 public class LoginAdmBean extends AbstractBean{
     
     private static final String HOME_ADMINISTRADOR = "home-administrador?faces-redirect=true";
-    private Administrador administrador = new Administrador();
+    private Usuario2 administrador = new Usuario2();
 
     public String autenticarAdministrador() {
-        Administrador cRetornado = new DAO<>(Administrador.class)
-                .autenticarAdministrador(administrador.getUsuarioidUsuario().getUsuario(), administrador.getUsuarioidUsuario().getSenha());
+        Usuario2 cRetornado = new DAO<>(Usuario2.class)
+                .autenticar(administrador.getUsuario(), administrador.getSenha(), TipoUsuario.ADM);
         if (cRetornado != null) {
             adicionaNaSessao(VariaveisSessao.USER_ADMINISTRADOR, cRetornado);
-            administrador = new Administrador();
+            administrador = new Usuario2();
             return HOME_ADMINISTRADOR;
         } else {
             exibirMensagem("administrador nao encontrado");
-            administrador = new Administrador();
+            administrador = new Usuario2();
             return "";
         }
     }
 
-    public Administrador getAdministrador() {
+    public Usuario2 getAdministrador() {
         return administrador;
     }
 
