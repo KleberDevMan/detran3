@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h:body>
+        <h1>Novo Veiculo</h1>
+        <fieldset>
+            <legend>Cadastro</legend>
+            <h:form>
+
+                <h:messages />
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Modelo" />
+                    <h:inputText value="#{cadastrarVeiculo.veiculo.modelo}"  />
+
+                    <h:outputLabel value="Placa" />
+                    <h:inputText value="#{cadastrarVeiculo.veiculo.placa}"  />
+
+                    <h:outputLabel value="Renavam" />
+                    <h:inputText value="#{cadastrarVeiculo.veiculo.renavam}" />
+
+                    <h:outputLabel value="Cor" />
+                    <h:inputText value="#{cadastrarVeiculo.veiculo.cor}" />
+
+                    <h:outputLabel value="Ano" />
+                    <h:inputText value="#{cadastrarVeiculo.veiculo.ano}" />
+                    
+                    <h:outputLabel value="#{cadastrarVeiculo.veiculo.proprietario}"/>
+                    <h:selectOneMenu>
+                        <f:selectItems value="#{cadastrarVeiculo.proprietarios}"
+                                       var="proprietario"
+                                       itemLabel="#{proprietario.nome}"/>
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <h:commandButton value="Cancelar" action="#{cadastrarVeiculo.btnCancelar()}"/>
+                <h:commandButton value="Salvar" style="margin-right: 8px;" action="#{cadastrarVeiculo.btnCadastrar()}"/>
+            </h:form>
+        </fieldset>
+
+    </h:body>
+</html>
