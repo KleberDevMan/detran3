@@ -6,26 +6,27 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body>
-        <center>
+    <ui:composition template="/templates/_template-login.xhtml">
+        <ui:define name="body">
+            <div align="left">
+                <b:link value="voltar" outcome="login" />
+            </div>
             <h1>Login Administrador</h1>
-            <h:form>
-                <h:messages />
-                <fieldset>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="Usuario" />
-                        <h:inputText value="#{loginAdmBean.administrador.usuario}"  />
-                        <h:outputLabel value="Senha" />
-                        <h:inputText value="#{loginAdmBean.administrador.senha}" />
-                        <h:commandButton value="Buscar" action="#{loginAdmBean.autenticarAdministrador()}"/>
-                    </h:panelGrid>
-                </fieldset>
-            </h:form>
-        </center>
-    </body>
+            <b:form>
+                <b:messages />
+                <h:panelGrid columns="1">
+                    <b:inputText label="Usuário" value="#{loginAdmBean.administrador.usuario}"  />
+                    <b:inputSecret label="Senha" value="#{loginAdmBean.administrador.senha}" />
+                    <b:commandButton value="Buscar" action="#{loginAdmBean.autenticarAdministrador()}"/>
+                </h:panelGrid>
+            </b:form>
+        </ui:define>
+    </ui:composition>
 </html>

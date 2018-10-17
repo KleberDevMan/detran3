@@ -19,7 +19,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Usuario2.autentica", query = "SELECT u FROM Usuario2 u WHERE u.usuario = :usuario and u.senha = :senha and u.tipoUsuario = :tipo")})
+    @NamedQuery(name = "Usuario2.autentica", query = "SELECT u FROM Usuario2 u WHERE u.usuario = :usuario and u.senha = :senha and u.tipoUsuario = :tipo")
+        ,@NamedQuery(name = "Usuario2.listar", query = "SELECT u FROM Usuario2 u WHERE u.tipoUsuario = :tipo")})
 public class Usuario2 implements Serializable {
 
     private static final long serialVersionUID = 1L;

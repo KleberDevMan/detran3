@@ -237,4 +237,22 @@ public class DAO<T> {
         
         return user;
     }
+    
+    public List<Usuario2> listaUsuarios(TipoUsuario tipo) {
+        EntityManager em = new JPAUtil().getEntityManager();
+      
+        List<Usuario2> users = null;
+        
+        try {
+            users = em.createNamedQuery("Usuario2.listar", Usuario2.class)
+                    .setParameter("tipo", tipo).getResultList();
+        } catch (Exception e) {
+            System.out.println("erro: "+e);
+        }
+
+        em.close();
+        
+        return users;
+    }
+    
 }

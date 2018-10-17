@@ -47,10 +47,6 @@ public class LoginBean extends AbstractBean{
     public Usuario2 getColaborador() {
         return colaborador;
     }
-    
-    
-    
-    
 }    
 
     

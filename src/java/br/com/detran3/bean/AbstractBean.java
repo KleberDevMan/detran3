@@ -15,15 +15,15 @@ public abstract class AbstractBean {
     public FacesContext getContext() {
         return FacesContext.getCurrentInstance();
     }
-    
+
     //RETORNA UMA REQUISICAO
     public HttpServletRequest getRequest() {
-    	return (HttpServletRequest) getContext().getExternalContext().getRequest();
+        return (HttpServletRequest) getContext().getExternalContext().getRequest();
     }
-    
+
     //RETORNA A SESSAO ATUAL
     public HttpSession getSession() {
-    	return getRequest().getSession(Boolean.TRUE);
+        return getRequest().getSession(Boolean.TRUE);
     }
 
     //EXIBE MENSAGEM
@@ -31,11 +31,17 @@ public abstract class AbstractBean {
         getContext().addMessage(null, new FacesMessage(msg));
     }
 
+    //EXIBE MENSAGEM FLASH
+    public void exibirMensagemFlash(String msg) {
+        getContext().getExternalContext().getFlash().setKeepMessages(true);
+        getContext().addMessage(null, new FacesMessage(msg));
+    }
+
     //ADICIONA UM OBJ NA SESSAO
     public void adicionaNaSessao(VariaveisSessao chave, Object obj) {
         getSession().setAttribute(chave.name(), obj);
     }
-    
+
     //REMOVE UM OBJ DA SESSAO
     public void removeDaSessao(VariaveisSessao chave) {
         getSession().removeAttribute(chave.name());

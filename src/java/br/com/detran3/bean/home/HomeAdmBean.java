@@ -2,6 +2,7 @@ package br.com.detran3.bean.home;
 
 import br.com.detran3.bean.AbstractBean;
 import br.com.detran3.dao.DAO;
+import br.com.detran3.enuns.TipoUsuario;
 import br.com.detran3.enuns.VariaveisSessao;
 import br.com.detran3.model.Usuario2;
 import java.util.List;
@@ -18,6 +19,7 @@ import javax.faces.bean.RequestScoped;
 public class HomeAdmBean extends AbstractBean {
 
     private static final String LOGIN_ADM = "loginAdm?faces-redirect=true";
+    private static final String NEW_USUARIO = "cadastrar-usuario?faces-redirect=true";
     private Usuario2 administrador;
     
     private Usuario2 novoAdm;
@@ -29,7 +31,18 @@ public class HomeAdmBean extends AbstractBean {
             administrador = (Usuario2) pegaDaSessao(VariaveisSessao.USER_ADMINISTRADOR);
         }
     }
+    
+    public String btnNew(){
+        return NEW_USUARIO;
+    }
 
+    public String editar(Integer idusuario2) {
+        //System.out.println(">> editando usuario: "+idusuario2);
+        Usuario2 user = new DAO<>(Usuario2.class).buscaPorId(idusuario2);
+        adicionaNaSessao(VariaveisSessao.USER_TEMPORARIO, user);
+        return NEW_USUARIO;
+    }
+    
     public void salvar() {
         System.out.println("salvando...");
     }
@@ -44,8 +57,13 @@ public class HomeAdmBean extends AbstractBean {
     }
     
     public List<Usuario2> getAdministradores() {
-        List<Usuario2> list =     new DAO<>(Usuario2.class).listaTodos();
+        List<Usuario2> list = new DAO<>(Usuario2.class).listaUsuarios(TipoUsuario.ADM);
         return list;
+    }
+    
+    public List<Usuario2> getColaboradores() {
+        return new DAO<>(Usuario2.class).listaUsuarios(TipoUsuario.COLABORADOR);
+//        return list;
     }
 
     public Usuario2 getNovoAdm() {
