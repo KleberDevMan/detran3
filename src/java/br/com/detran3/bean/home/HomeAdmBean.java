@@ -19,6 +19,7 @@ import javax.faces.bean.RequestScoped;
 public class HomeAdmBean extends AbstractBean {
 
     private static final String LOGIN_ADM = "loginAdm?faces-redirect=true";
+    private static final String EDIT_USUARIO = "editar-usuario?faces-redirect=true";
     private static final String NEW_USUARIO = "cadastrar-usuario?faces-redirect=true";
     private Usuario2 administrador;
     
@@ -33,13 +34,21 @@ public class HomeAdmBean extends AbstractBean {
     }
     
     public String btnNew(){
-        return NEW_USUARIO;
+        return EDIT_USUARIO;
     }
 
     public String editar(Integer idusuario2) {
-        //System.out.println(">> editando usuario: "+idusuario2);
         Usuario2 user = new DAO<>(Usuario2.class).buscaPorId(idusuario2);
         adicionaNaSessao(VariaveisSessao.USER_TEMPORARIO, user);
+        return EDIT_USUARIO;
+    }
+    
+    public void remover(Integer idusuario2) {
+        Usuario2 user = new DAO<>(Usuario2.class).buscaPorId(idusuario2);
+        new DAO<>(Usuario2.class).remove(user);
+    }
+    
+    public String novo() {
         return NEW_USUARIO;
     }
     

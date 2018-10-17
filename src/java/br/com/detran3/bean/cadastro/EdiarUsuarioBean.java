@@ -32,7 +32,8 @@ public class EdiarUsuarioBean extends AbstractBean{
     }
     
     public String btnEditar() {
-        new DAO<>(Usuario2.class).adiciona(usuario);
+//        new DAO<>(Usuario2.class).adiciona(usuario);
+        new DAO<>(Usuario2.class).atualiza(usuario);
         exibirMensagemFlash("Alterações salvas.");
         return HOME_ADM;
     }

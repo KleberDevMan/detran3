@@ -7,13 +7,12 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="/templates/_adm-template.xhtml">
         <ui:define name="body">
             <h3>Administradores</h3>
-            <b:form>
+            <b:form id="form">
                 <b:messages />
                 <b:dataTable id="table" value="#{homeAdmBean.administradores}" var="adm" 
                              page-length="5"
@@ -22,9 +21,11 @@ and open the template in the editor.
                     <b:dataTableColumn value="#{adm.usuario}" order="asc" />
                     <b:dataTableColumn value="#{adm.senha}" />
                     <b:dataTableColumn>
-                        <b:commandButton value="Editar" icon="edit" action="#{homeAdmBean.editar(adm.idusuario2)}" />
+                        <b:commandButton value="Editar" look="success" iconAwesome="fa-pencil" action="#{homeAdmBean.editar(adm.idusuario2)}" />
+                        <b:commandButton value="Remover" update=":form" look="danger" style="margin-left: 8px" iconAwesome="fa-remove" action="#{homeAdmBean.remover(adm.idusuario2)}" />
                     </b:dataTableColumn>
                 </b:dataTable>
+                <b:commandButton value="Novo" look="primary" iconAwesome="thumbs-up" action="#{homeAdmBean.novo()}" />
             </b:form>
         </ui:define>
     </ui:composition>

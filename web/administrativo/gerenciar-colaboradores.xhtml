@@ -19,9 +19,7 @@ and open the template in the editor.
                     <b:dataTableColumn value="#{c.usuario}" order="asc" />
                     <b:dataTableColumn value="#{c.senha}" />
                     <b:dataTableColumn>
-                        <b:commandButton id="edit" value="Editar" icon="edit" ajax="true" update="**:tabela"
-                                         onclick="ajax:homeAdmBean.editar()" >
-                        </b:commandButton>
+                         <b:commandButton value="Editar" icon="edit" action="#{homeAdmBean.editar(c.idusuario2)}" />
                     </b:dataTableColumn>
                 </b:dataTable>
             </b:form>

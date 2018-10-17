@@ -24,13 +24,14 @@ and open the template in the editor.
                     <b:inputSecret style="margin-left: 10px;" label="Senha" value="#{ediarUsuarioBean.usuario.senha}" />
                     <b:selectOneMenu id="tipoUsuario"
                                      value="#{ediarUsuarioBean.usuario.tipoUsuario}"
-                                     required="true">
+                                     required="true"
+                                     required-message="Tipo Usuário: obrigatório.">
                         <f:selectItem itemLabel="Selecione" itemValue="" />
                         <f:selectItems value="#{ediarUsuarioBean.tiposUser}"
                                        var="tipo" itemLabel="#{tipo.descricao}" />
                     </b:selectOneMenu>
                 </h:panelGrid>
-                <b:commandButton value="Editar" look="success" action="#{ediarUsuarioBean.btnEditar()}"/>
+                <b:commandButton iconAwesome="fa-save" value="Editar" look="success" action="#{ediarUsuarioBean.btnEditar()}"/>
             </b:form>
         </ui:define>
     </ui:composition>
