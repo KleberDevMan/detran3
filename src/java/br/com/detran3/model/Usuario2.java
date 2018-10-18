@@ -39,9 +39,6 @@ public class Usuario2 implements Serializable {
     private String senha;
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
-    
-    @ManyToMany(fetch=FetchType.EAGER)
-    private List<Role> regras = new ArrayList<>();
 
     public Usuario2() {
     }

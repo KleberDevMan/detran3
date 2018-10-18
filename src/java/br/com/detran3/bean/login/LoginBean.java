@@ -16,12 +16,11 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class LoginBean extends AbstractBean{
     
-    private static final String HOME_COLABORADOR = "home-colaborador?faces-redirect=true";
+    private static final String HOME_COLABORADOR = "gerenciar-proprietarios?faces-redirect=true";
     private static final String LOGIN_ADMINISTRADOR = "/administrador/loginAdm?faces-redirect=true";
     
     Usuario2 colaborador = new Usuario2();
     
-    //busco o veiculo e salvo em sessao
     public String btnBuscarClick() {
         if (colaborador.getUsuario().equals("adm")
                 &&colaborador.getSenha().equals("adm")) {

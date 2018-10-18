@@ -6,15 +6,15 @@
     <h:head>
         <title>detran3</title>
     </h:head>
-    <h:body>
-        <h1>Detran3</h1>
+    <h:body style="background: url('imagens/bg2.jpg') repeat !important;">
         <b:container>
+        <b:image style="margin-top: 60px; " value="/imagens/logo.png" tooltip="Departamento Estadual de Veículos (Clone Melhorado)" width="400px"/>
             <div align="right">
                 <h:link value="administrativo" outcome="/colaborador/login.xhtml" />
             </div>
             <h:form>
                 <b:messages />
-                <h:outputLabel class="h3" value="Veículos / Multas" />
+                <h:outputLabel class="h3" value="Veículos / Multas" /><br /><br />
                 <h:panelGrid columns="2">
                     <b:inputText label="Placa" span="12" value="#{indexBean.veiculo.placa}" />
                     <b:inputText label="Renavam" span="12" value="#{indexBean.veiculo.renavam}" />

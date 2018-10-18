@@ -75,14 +75,6 @@ public class HomeAdmBean extends AbstractBean {
         removeDaSessao(VariaveisSessao.USER_ADMINISTRADOR);
         return LOGIN_ADM;
     }
-//    public void sair()  {
-//        removeDaSessao(VariaveisSessao.USER_ADMINISTRADOR);
-//        try {
-//            getContext().getExternalContext().redirect(LOGIN_ADM);
-//        } catch (IOException ex) {
-//            Logger.getLogger(HomeAdmBean.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 
     public Usuario2 getAdmSession() {
         return admSession;

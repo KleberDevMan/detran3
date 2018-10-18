@@ -3,11 +3,9 @@ package br.com.detran3.bean.cadastro;
 import br.com.detran3.bean.AbstractBean;
 import br.com.detran3.dao.DAO;
 import br.com.detran3.enuns.TipoUsuario;
-import br.com.detran3.enuns.VariaveisSessao;
 import br.com.detran3.model.Usuario2;
 import java.util.Arrays;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 

@@ -23,7 +23,7 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class HomeColaboradorBean extends AbstractBean {
 
-    private static final String LOGIN = "login?faces-redirect=true";
+    private static final String LOGIN = "/colaborador/login?faces-redirect=true";
     private static final String EDIT_USUARIO = "editar-usuario?faces-redirect=true";
     private static final String NEW_USUARIO = "cadastrar-usuario?faces-redirect=true";
     private Usuario2 colaboradorSession;
@@ -41,7 +41,7 @@ public class HomeColaboradorBean extends AbstractBean {
     public void verificaSeLogou() {
         if (colaboradorSession == null) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/detran3/administrador/loginAdm.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/detran3/colaborador/login.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(HomeColaboradorBean.class.getName()).log(Level.SEVERE, null, ex);
             }

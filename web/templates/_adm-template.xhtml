@@ -8,17 +8,17 @@
         <title>admistrativo - detran3</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
+    <h:body style="background: url('../imagens/bg2.jpg') repeat !important;">
         <h:form>
             <!--barra de navegacao-->
-            <b:navBar brand="Home" brand-href="#" fixed="top">
+            <b:navBar fixed="top">
                 <b:navbarLinks >
                     <b:navLink value="Administradores" href="gerenciar-administradores.xhtml" />
                     <b:navLink value="Colaboradores" href="gerenciar-colaboradores.xhtml" />
                 </b:navbarLinks>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="pad">
-                        <p class="navbar-text" style="color: brown">#{homeAdmBean.admSession.usuario}</p>
+                        <p class="navbar-text" style="color: brown;">#{homeAdmBean.admSession.usuario}</p>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
@@ -27,7 +27,7 @@
                 </ul>
             </b:navBar>
         </h:form>
-        <f:event type="preRenderView" listener="#{homeAdmBean.autenticar()}" />
+        <!--<f:event type="preRenderView" listener="{homeAdmBean.autenticar()}" />-->
         <b:container style="padding-top: 70px;">
             <ui:insert name="body" />
         </b:container>
