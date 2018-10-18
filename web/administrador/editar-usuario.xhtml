@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <ui:composition template="/templates/_adm-template.xhtml">
+        <ui:define name="body">
+            <h1>Cadastrar Usuario</h1>
+            <b:form>
+                <b:messages />
+                <h:panelGrid columns="2">
+                    <b:inputText label="Usuario" value="#{ediarUsuarioBean.usuario.usuario}"  />
+                    <b:inputSecret style="margin-left: 10px;" label="Senha" value="#{ediarUsuarioBean.usuario.senha}" />
+                    <b:selectOneMenu id="tipoUsuario"
+                                     value="#{ediarUsuarioBean.usuario.tipoUsuario}"
+                                     required="true"
+                                     required-message="Tipo Usuário: obrigatório.">
+                        <f:selectItem itemLabel="Selecione" itemValue="" />
+                        <f:selectItems value="#{ediarUsuarioBean.tiposUser}"
+                                       var="tipo" itemLabel="#{tipo.descricao}" />
+                    </b:selectOneMenu>
+                </h:panelGrid>
+                <b:commandButton iconAwesome="fa-save" value="Editar" look="success" action="#{ediarUsuarioBean.btnEditar()}"/>
+            </b:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

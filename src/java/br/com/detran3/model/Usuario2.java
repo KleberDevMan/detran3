@@ -2,14 +2,18 @@ package br.com.detran3.model;
 
 import br.com.detran3.enuns.TipoUsuario;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -35,6 +39,9 @@ public class Usuario2 implements Serializable {
     private String senha;
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
+    
+    @ManyToMany(fetch=FetchType.EAGER)
+    private List<Role> regras = new ArrayList<>();
 
     public Usuario2() {
     }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h:body>
+        <h1>Nova Multa</h1>
+        <fieldset>
+            <legend>Cadastro</legend>
+            <h:form>
+
+                <h:messages />
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Descricao" />
+                    <h:inputText value="#{cadastrarMulta.multa.descricao}"  />
+
+                    <h:outputLabel value="Valor" />
+                    <h:inputText value="#{cadastrarMulta.multa.valor}"  />
+
+                    <h:outputLabel value="Veiculo" />
+                    <h:selectOneMenu value="#{cadastrarMulta.idVeiculo}">
+                        <f:selectItems value="#{cadastrarMulta.veiculos}" 
+                                       var="veiculo"
+                                       itemLabel="#{veiculo.modelo}"
+                                       itemValue="#{veiculo.idVeiculo}"/>
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <h:commandButton value="Cancelar" action="#{cadastrarMulta.btnCancelar()}"/>
+                <h:commandButton value="Salvar" style="margin-right: 8px;" action="#{cadastrarMulta.btnCadastrar()}"/>
+            </h:form>
+        </fieldset>
+
+    </h:body>
+</html>

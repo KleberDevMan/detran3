@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <!-- Nome da Aplicação -->
+    <display-name>detran3</display-name>
+    
+    <!-- Estágio do Projeto -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    
+    <!-- Configuração do JSF -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -13,12 +20,43 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    
+    <!--  Tempo limite da sessão -->
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
+    <!-- Página principal -->
     <welcome-file-list>
         <welcome-file>inicio.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <!-- spring security -->
+    
+<!--     configuracao JAAS 
+    <security-constraint>
+        url que desejo proteger
+        <web-resource-collection>
+            <web-resource-name>administration</web-resource-name>
+            <url-pattern>/administrativo/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <description>URLs que levam para a administração do site</description>
+        </web-resource-collection>
+        regras
+        <auth-constraint>
+            <role-name>ADM</role-name>
+        </auth-constraint>
+    </security-constraint>
+    metodo de autenticacao
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/usuarios/loginAdm2.xhtml</form-login-page>
+            <form-error-page>/usuarios/loginAdm2.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>-->
+    
 </web-app>
