@@ -2,7 +2,7 @@ package br.com.detran3.dao;
 
 import br.com.detran3.enuns.TipoUsuario;
 import br.com.detran3.enuns.VariaveisSessao;
-import br.com.detran3.model.Usuario2;
+import br.com.detran3.model.Usuario;
 import br.com.detran3.model.Veiculo;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -116,13 +116,13 @@ public class DAO<T> {
 
     }
 
-    public Usuario2 autenticar(String usuario, String senha, TipoUsuario tipo) {
+    public Usuario autenticar(String usuario, String senha, TipoUsuario tipo) {
         EntityManager em = new JPAUtil().getEntityManager();
       
-        Usuario2 user = null;
+        Usuario user = null;
         
         try {
-            user = (Usuario2) em.createNamedQuery("Usuario2.autentica", Usuario2.class)
+            user = (Usuario) em.createNamedQuery("Usuario.autentica", Usuario.class)
                     .setParameter("usuario", usuario)
                     .setParameter("senha", senha)
                     .setParameter("tipo", tipo)
@@ -136,13 +136,13 @@ public class DAO<T> {
         return user;
     }
     
-    public List<Usuario2> listaUsuarios(TipoUsuario tipo) {
+    public List<Usuario> listaUsuarios(TipoUsuario tipo) {
         EntityManager em = new JPAUtil().getEntityManager();
       
-        List<Usuario2> users = null;
+        List<Usuario> users = null;
         
         try {
-            users = em.createNamedQuery("Usuario2.listar", Usuario2.class)
+            users = em.createNamedQuery("Usuario.listar", Usuario.class)
                     .setParameter("tipo", tipo).getResultList();
         } catch (Exception e) {
             System.out.println("erro: "+e);

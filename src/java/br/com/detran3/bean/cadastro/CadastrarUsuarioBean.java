@@ -3,7 +3,7 @@ package br.com.detran3.bean.cadastro;
 import br.com.detran3.bean.AbstractBean;
 import br.com.detran3.dao.DAO;
 import br.com.detran3.enuns.TipoUsuario;
-import br.com.detran3.model.Usuario2;
+import br.com.detran3.model.Usuario;
 import java.util.Arrays;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -19,19 +19,19 @@ public class CadastrarUsuarioBean extends AbstractBean{
 
     private static final String HOME_ADM = "gerenciar-administradores?faces-redirect=true";
 
-    private Usuario2 usuario = new Usuario2();
+    private Usuario usuario = new Usuario();
     
     public String btnCadastrar() {
-        new DAO<>(Usuario2.class).adiciona(usuario);
+        new DAO<>(Usuario.class).adiciona(usuario);
         exibirMensagemFlash("Usuario cadastrado");
         return HOME_ADM;
     }
 
-    public Usuario2 getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario2 usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

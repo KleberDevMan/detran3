@@ -4,7 +4,7 @@ import br.com.detran3.bean.AbstractBean;
 import br.com.detran3.dao.DAO;
 import br.com.detran3.enuns.TipoUsuario;
 import br.com.detran3.enuns.VariaveisSessao;
-import br.com.detran3.model.Usuario2;
+import br.com.detran3.model.Usuario;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -21,27 +21,27 @@ public class EdiarUsuarioBean extends AbstractBean{
 
     private static final String HOME_ADM = "gerenciar-administradores?faces-redirect=true";
 
-    private Usuario2 usuario;
+    private Usuario usuario;
     
     @PostConstruct
     public void init() {
-        usuario = (Usuario2) pegaDaSessao(VariaveisSessao.USER_TEMPORARIO);
+        usuario = (Usuario) pegaDaSessao(VariaveisSessao.USER_TEMPORARIO);
         if (usuario == null) {
-            usuario = new Usuario2();
+            usuario = new Usuario();
         }
     }
     
     public String btnEditar() {
-        new DAO<>(Usuario2.class).atualiza(usuario);
+        new DAO<>(Usuario.class).atualiza(usuario);
         exibirMensagemFlash("Alterações salvas.");
         return HOME_ADM;
     }
 
-    public Usuario2 getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario2 usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

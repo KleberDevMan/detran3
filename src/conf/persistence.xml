@@ -13,8 +13,9 @@
     <class>br.com.detran3.model.Contato</class>
     <class>br.com.detran3.model.Estado</class>
     <class>br.com.detran3.model.Imagemproprietario</class>
-    <class>br.com.detran3.model.Usuario2</class>
+    <class>br.com.detran3.model.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <validation-mode>NONE</validation-mode>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/detran3?zeroDateTimeBehavior=convertToNull"/>

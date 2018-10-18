@@ -18,11 +18,11 @@
                 </b:navbarLinks>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="pad">
-                        <p class="navbar-text" style="color: brown;">#{homeAdmBean.admSession.usuario}</p>
+                        <p class="navbar-text" style="color: brown;">#{gerenciarAdministradoresBean.administradorLogado.usuario}</p>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
-                        <h:commandLink action="#{homeAdmBean.sair()}" value="Logout" />
+                        <h:commandLink action="#{gerenciarAdministradoresBean.sair()}" value="Logout" />
                     </li>
                 </ul>
             </b:navBar>

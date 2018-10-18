@@ -5,7 +5,7 @@ import br.com.detran3.dao.DAO;
 import br.com.detran3.enuns.TipoUsuario;
 import br.com.detran3.enuns.VariaveisSessao;
 import br.com.detran3.model.Proprietario;
-import br.com.detran3.model.Usuario2;
+import br.com.detran3.model.Usuario;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,7 +26,7 @@ public class HomeColaboradorBean extends AbstractBean {
     private static final String LOGIN = "/colaborador/login?faces-redirect=true";
     private static final String EDIT_USUARIO = "editar-usuario?faces-redirect=true";
     private static final String NEW_USUARIO = "cadastrar-usuario?faces-redirect=true";
-    private Usuario2 colaboradorSession;
+    private Usuario colaboradorSession;
 
 //    private Usuario2 colaboradorParaCadastro;
 //    private Usuario2 admParaCadastro;
@@ -34,7 +34,7 @@ public class HomeColaboradorBean extends AbstractBean {
     @PostConstruct
     public void init() {
         if (colaboradorSession == null) {
-            colaboradorSession = (Usuario2) pegaDaSessao(VariaveisSessao.USER_COLABORADOR);
+            colaboradorSession = (Usuario) pegaDaSessao(VariaveisSessao.USER_COLABORADOR);
         }
     }
 
@@ -77,7 +77,7 @@ public class HomeColaboradorBean extends AbstractBean {
         return LOGIN;
     }
 
-    public Usuario2 getColaboradorSession() {
+    public Usuario getColaboradorSession() {
         return colaboradorSession;
     }
 
