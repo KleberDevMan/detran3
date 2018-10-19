@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Veiculo.findAll", query = "SELECT v FROM Veiculo v")
+    , @NamedQuery(name = "Veiculo.findVeiculo", query = "SELECT v FROM Veiculo v WHERE v.placa = :placa and v.renavam = :renavam")
     , @NamedQuery(name = "Veiculo.findByIdVeiculo", query = "SELECT v FROM Veiculo v WHERE v.idVeiculo = :idVeiculo")
     , @NamedQuery(name = "Veiculo.findByModelo", query = "SELECT v FROM Veiculo v WHERE v.modelo = :modelo")
-    , @NamedQuery(name = "Veiculo.findByPlacaRenavam", query = "SELECT v FROM Veiculo v WHERE v.placa = :placa and v.renavam = :renavam")
     , @NamedQuery(name = "Veiculo.findByPlaca", query = "SELECT v FROM Veiculo v WHERE v.placa = :placa")
     , @NamedQuery(name = "Veiculo.findByRenavam", query = "SELECT v FROM Veiculo v WHERE v.renavam = :renavam")
     , @NamedQuery(name = "Veiculo.findByAno", query = "SELECT v FROM Veiculo v WHERE v.ano = :ano")

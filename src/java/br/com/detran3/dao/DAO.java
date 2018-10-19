@@ -103,7 +103,7 @@ public class DAO<T> {
 
         T result = null;
         try {
-            result = (T) em.createNamedQuery("Veiculo.findByPlacaRenavam", Veiculo.class)
+            result = (T) em.createNamedQuery("Veiculo.findVeiculo", Veiculo.class)
                     .setParameter("placa", placa).setParameter("renavam", renavam)
                     .getSingleResult();
         } catch (Exception e) {

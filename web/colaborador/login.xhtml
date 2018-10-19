@@ -16,7 +16,7 @@ and open the template in the editor.
     <ui:composition template="/templates/_template-login.xhtml">
         <ui:define name="body">
             <div align="left">
-                <b:link value="voltar" outcome="/inicio" />
+                <b:link class="btn btn-default" iconAwesome="fa-arrow-left" outcome="/inicio" />
             </div>
             <h1>Login</h1>
             <b:form>
@@ -24,7 +24,7 @@ and open the template in the editor.
                     <h:panelGrid columns="1">
                         <b:inputText label="Usuário" value="#{loginBean.colaborador.usuario}" />
                         <b:inputSecret label="Senha" value="#{loginBean.colaborador.senha}" />
-                        <b:commandButton value="Buscar" action="#{loginBean.btnBuscarClick()}"/>
+                        <b:commandButton look="primary" value="Buscar" action="#{loginBean.btnBuscarClick()}"/>
                     </h:panelGrid>
             </b:form>
         </ui:define>

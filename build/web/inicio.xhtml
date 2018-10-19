@@ -8,9 +8,16 @@
     </h:head>
     <h:body style="background: url('imagens/bg2.jpg') repeat !important;">
         <b:container>
-        <b:image style="margin-top: 60px; " value="/imagens/logo.png" tooltip="Departamento Estadual de Veículos (Clone Melhorado)" width="400px"/>
+            <b:image style="margin-top: 60px; " value="/imagens/logo.png" tooltip="Departamento Estadual de Veículos (Clone Melhorado)" tooltip-position="right" width="400px"/>
+            
+            <h:form id="form">
+                <b:messages id="frase" />
+                <b:selectBooleanCheckbox value="#{indexBean.check}" caption="Frase do dia" 
+                                         onclick="ajax:indexBean.exibirFraseDoDia();" update=":form:frase"/>
+            </h:form>
+
             <div align="right">
-                <h:link value="administrativo" outcome="/colaborador/login.xhtml" />
+                <h:link class="btn btn-default" value="administrativo" outcome="/colaborador/login.xhtml" />
             </div>
             <h:form>
                 <b:messages />
@@ -18,7 +25,7 @@
                 <h:panelGrid columns="2">
                     <b:inputText label="Placa" span="12" value="#{indexBean.veiculo.placa}" />
                     <b:inputText label="Renavam" span="12" value="#{indexBean.veiculo.renavam}" />
-                    <b:commandButton value="Buscar" span="6" action="#{indexBean.btnBuscarClick()}"/>
+                    <b:commandButton value="Buscar" look="primary" span="6" action="#{indexBean.btnBuscarClick()}"/>
                 </h:panelGrid>
             </h:form>
         </b:container>

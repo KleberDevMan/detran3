@@ -3,10 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    
-    <ui:composition template="/templates/_adm-template.xhtml">
+    <ui:composition template="/templates/administrador/template.xhtml">
         <ui:define name="body">
             <h3>Administradores</h3>
             <b:form id="form">
@@ -18,13 +18,41 @@
                     <b:dataTableColumn value="#{adm.usuario}" order="asc" />
                     <b:dataTableColumn value="#{adm.senha}" />
                     <b:dataTableColumn>
-                        <b:commandButton value="Editar" look="success" iconAwesome="fa-pencil" action="#{gerenciarAdministradoresBean.editar(adm.idusuario2)}" />
-                        <b:commandButton value="Remover" update=":form" look="danger" style="margin-left: 8px" iconAwesome="fa-remove" action="#{gerenciarAdministradoresBean.remover(adm.idusuario2)}" />
+                        <b:commandButton value="Editar" look="success" iconAwesome="fa-pencil" action="#{gerenciarAdministradoresBean.editar(adm.idusuario2, 1)}" />
+                        <b:commandButton value="Remover" look="danger" style="margin-left: 8px" iconAwesome="fa-remove" action="#{gerenciarAdministradoresBean.remover(adm.idusuario2)}" />
+
+
+
+                        <b:button onclick="$('.formValidationModalClass').modal('show')" value="Remover c/ Modal"/>
+                        <b:modal title="Confirmação" styleClass="formValidationModalClass"
+                                 closable="false"
+                                 closeOnEscape="true">
+                            <b:form>
+                                <p>Tem certeza que deseja excluir?</p>
+                                <b:row>
+                                    <b:column>
+                                        <b:button largeScreen="half"  value="Cancel"
+                                                  dismiss="modal" onclick="return false;"/>
+                                        <b:commandButton largeScreen="half"
+                                                         dismiss="modal"
+                                                         value="Save" look="success"
+                                                         action="#{gerenciarAdministradoresBean.remover(adm.idusuario2)}"
+                                                         oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
+                                    </b:column>
+                                </b:row>
+                                <b:fetchBeanInfos />
+                                <b:messages />
+                            </b:form>
+                        </b:modal>
+                        
+                        
                     </b:dataTableColumn>
                 </b:dataTable>
                 <b:commandButton value="Novo" look="primary" iconAwesome="thumbs-up" action="#{gerenciarAdministradoresBean.novo()}" />
             </b:form>
+
         </ui:define>
+
     </ui:composition>
 
 </html>
