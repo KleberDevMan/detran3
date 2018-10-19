@@ -117,6 +117,7 @@ public class DAO<T> {
     }
 
     public Usuario autenticar(String usuario, String senha, TipoUsuario tipo) {
+
         EntityManager em = new JPAUtil().getEntityManager();
       
         Usuario user = null;
