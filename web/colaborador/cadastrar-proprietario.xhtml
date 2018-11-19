@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <center>
-            <h1>Cadastrar proprietario</h1>
-            <h:form>
-                <h:messages />
-                <fieldset>
+    </h:head>
+    <h:body>
+        <b:container>
+            <center>
+                <h1>#{cadastrarProprietarioBean.labelBtn} proprietário</h1>
+                <b:form>
+                    <b:messages />
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="nome" />
-                        <h:inputText value="#{cadastrarProprietarioBean.proprietario.nome}"  />
-                        <h:outputLabel value="CNH" />
-                        <h:inputText value="#{cadastrarProprietarioBean.proprietario.cnh}" />
-                        <h:outputLabel value="CPF" />
-                        <h:inputText value="#{cadastrarProprietarioBean.proprietario.cpf}" />
+                        <b:inputText span="12" label="Nome" value="#{cadastrarProprietarioBean.proprietario.nome}" />
+                        <b:inputText span="12" label="CNH" value="#{cadastrarProprietarioBean.proprietario.cnh}" />
+                        <b:inputText span="12" label="CPF" value="#{cadastrarProprietarioBean.proprietario.cpf}" />
                     </h:panelGrid>
-                    <h:commandButton value="#{cadastrarProprietarioBean.labelBtn}" action="#{cadastrarProprietarioBean.btnOk()}"/>
-                </fieldset>
-            </h:form>
-        </center>
-    </body>
+                    <h:panelGrid columns="2">
+                        <b:commandButton span="12" look="danger" value="Cancelar" action="page-proprietario?faces-redirect=true"/>
+                        <b:commandButton look="success" value="#{cadastrarProprietarioBean.labelBtn}" action="#{cadastrarProprietarioBean.btnOk()}"/>
+                    </h:panelGrid>
+                </b:form>
+            </center>
+        </b:container>
+    </h:body>
 </html>
