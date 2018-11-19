@@ -21,9 +21,7 @@
                         <b:commandButton value="Editar" look="success" iconAwesome="fa-pencil" action="#{gerenciarAdministradoresBean.editar(adm.idusuario2, 1)}" />
                         <b:commandButton value="Remover" look="danger" style="margin-left: 8px" iconAwesome="fa-remove" action="#{gerenciarAdministradoresBean.remover(adm.idusuario2)}" />
 
-
-
-                        <b:button onclick="$('.formValidationModalClass').modal('show')" value="Remover c/ Modal"/>
+<!--                        <b:button value="Remover" look="danger" style="margin-left: 8px" iconAwesome="fa-remove"  onclick="$('.formValidationModalClass').modal('show')"/>
                         <b:modal title="Confirmação" styleClass="formValidationModalClass"
                                  closable="false"
                                  closeOnEscape="true">
@@ -36,15 +34,13 @@
                                         <b:commandButton largeScreen="half"
                                                          dismiss="modal"
                                                          value="Save" look="success"
-                                                         action="#{gerenciarAdministradoresBean.remover(adm.idusuario2)}"
+                                                         action="{gerenciarAdministradoresBean.remover(adm.idusuario2)}"
                                                          oncomplete="if(!validationFailed) { $('.formValidationModalClass').modal('hide') } "/>
                                     </b:column>
                                 </b:row>
-                                <b:fetchBeanInfos />
-                                <b:messages />
                             </b:form>
                         </b:modal>
-                        
+                        -->
                         
                     </b:dataTableColumn>
                 </b:dataTable>

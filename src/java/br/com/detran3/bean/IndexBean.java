@@ -20,22 +20,7 @@ public class IndexBean extends AbstractBean {
     
     Veiculo veiculo = new Veiculo();
     
-    private boolean check;
-    private String[] frases =  {"O importante não é vencer todos os dias, mas lutar sempre."
-            , "Enquanto houver vontade de lutar haverá esperança de vencer."
-            ,"Arriscamo-nos a perder quando queremos ganhar demais." 
-            , "Se você pretende ser rico, pense em economizar tanto quanto em ganhar."};
-
-    public boolean isCheck() {
-        return check;
-    }
-
-    public void setCheck(boolean check) {
-        this.check = check;
-    }
-    
-
-    //busco o veiculo e salvo em sessao
+    //BUSCO VEICULO E SALVO EM SESSAO
     public String btnBuscarClick() {
         Veiculo vRetornado = new DAO<>(Veiculo.class).autenticarVeiculo(veiculo.getPlaca(), veiculo.getRenavam());
         if (vRetornado != null) {
@@ -43,20 +28,12 @@ public class IndexBean extends AbstractBean {
             veiculo = new Veiculo();
             return HOME_VEICULO;
         } else {
-            exibirMensagem("veiculo nao encontrado");
+            exibirMensagem("Veículo não encontrado.");
             veiculo = new Veiculo();
             return "";
         }
     }
 
-    
-    public void exibirFraseDoDia() {
-        if (check) {
-            getContext().addMessage(":form:msg", new FacesMessage(frases[ThreadLocalRandom.current().nextInt(0, 3)]));
-            
-        }
-    }
-    
     public Veiculo getVeiculo() {
         return veiculo;
     }

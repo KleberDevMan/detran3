@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <ui:composition template="/templates/_colaborador-template.xhtml">
+        <ui:define name="body">
+            
+            <b:jumbotron>
+                <h3>Veículos</h3>
+                <b:form id="form">
+                    <b:messages />
+                    <b:dataTable id="table" value="#{homeColaboradorBean.veiculos}" var="v" 
+                                 page-length="3"
+                                 excel="true"
+                                 pdf="true">
+                        <b:dataTableColumn value="#{v.modelo}" order="asc" />
+                        <b:dataTableColumn value="#{v.placa}" />
+                        <b:dataTableColumn label="Proprietário" value="#{v.proprietarioidProprietario.nome}" />
+                        <b:dataTableColumn>
+                            <b:commandButton value="Editar" look="success" iconAwesome="fa-pencil" action="#{homeColaboradorBean.editarVeiculo(v.idVeiculo)}" />
+                            <b:commandButton value="Remover" look="danger" update=":form" style="margin-left: 8px" iconAwesome="fa-remove" action="#{homeColaboradorBean.removerVeiculo(v.idVeiculo)}" />
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                    <b:commandButton value="Novo" look="primary" iconAwesome="fa-plus" action="#{homeColaboradorBean.novoVeiculo()}" />
+                </b:form>
+            </b:jumbotron>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

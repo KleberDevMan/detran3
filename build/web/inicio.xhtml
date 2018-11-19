@@ -6,16 +6,10 @@
     <h:head>
         <title>detran3</title>
     </h:head>
+
     <h:body style="background: url('imagens/bg2.jpg') repeat !important;">
         <b:container>
             <b:image style="margin-top: 60px; " value="/imagens/logo.png" tooltip="Departamento Estadual de Veículos (Clone Melhorado)" tooltip-position="right" width="400px"/>
-            
-            <h:form id="form">
-                <b:messages id="frase" />
-                <b:selectBooleanCheckbox value="#{indexBean.check}" caption="Frase do dia" 
-                                         onclick="ajax:indexBean.exibirFraseDoDia();" update=":form:frase"/>
-            </h:form>
-
             <div align="right">
                 <h:link class="btn btn-default" value="administrativo" outcome="/colaborador/login.xhtml" />
             </div>
@@ -30,5 +24,6 @@
             </h:form>
         </b:container>
     </h:body>
+
 </html>
 

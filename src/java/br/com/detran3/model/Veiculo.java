@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -57,9 +58,9 @@ public class Veiculo implements Serializable {
     @Column(name = "cor")
     private String cor;
     @JoinColumn(name = "Proprietario_idProprietario", referencedColumnName = "idProprietario")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Proprietario proprietarioidProprietario;
-    @OneToMany(mappedBy = "veiculoidVeiculo")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculoidVeiculo")
     private List<Multa> multaList;
 
     public Veiculo() {

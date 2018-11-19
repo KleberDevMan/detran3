@@ -23,12 +23,6 @@ public class CadastrarMultaBean extends AbstractBean {
 
         System.out.println(multa);
 
-//        Veiculo v = new Veiculo(new Long(1));
-//        multa.setVeiculo(v);
-//        
-//        if (multa.getVeiculo() == null) {
-//            addMensagem("é preciso escolher um veiculo");
-//        }
         new DAO<>(Multa.class).adiciona(multa);
         return "";
     }

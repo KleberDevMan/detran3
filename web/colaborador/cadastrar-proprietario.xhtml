@@ -14,13 +14,13 @@
                 <fieldset>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="nome" />
-                        <h:inputText value="#{cadastrarProprietario.proprietario.nome}"  />
+                        <h:inputText value="#{cadastrarProprietarioBean.proprietario.nome}"  />
                         <h:outputLabel value="CNH" />
-                        <h:inputText value="#{cadastrarProprietario.proprietario.cnh}" />
+                        <h:inputText value="#{cadastrarProprietarioBean.proprietario.cnh}" />
                         <h:outputLabel value="CPF" />
-                        <h:inputText value="#{cadastrarProprietario.proprietario.cpf}" />
+                        <h:inputText value="#{cadastrarProprietarioBean.proprietario.cpf}" />
                     </h:panelGrid>
-                    <h:commandButton value="Cadastrar" action="#{cadastrarProprietario.btnCadastrar()}"/>
+                    <h:commandButton value="#{cadastrarProprietarioBean.labelBtn}" action="#{cadastrarProprietarioBean.btnOk()}"/>
                 </fieldset>
             </h:form>
         </center>

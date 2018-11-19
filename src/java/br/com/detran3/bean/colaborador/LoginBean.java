@@ -16,7 +16,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class LoginBean extends AbstractBean{
     
-    private static final String HOME_COLABORADOR = "gerenciar-proprietarios?faces-redirect=true";
+    private static final String HOME_COLABORADOR = "page-proprietario?faces-redirect=true";
     private static final String LOGIN_ADMINISTRADOR = "/administrador/loginAdm?faces-redirect=true";
     
     Usuario colaborador = new Usuario();

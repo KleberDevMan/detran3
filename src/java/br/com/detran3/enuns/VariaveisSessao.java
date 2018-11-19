@@ -12,6 +12,16 @@ package br.com.detran3.enuns;
  */
 public enum VariaveisSessao {
     
-    USER_COLABORADOR, USER_ADMINISTRADOR, VEICULO, USER_TEMPORARIO, ITEM_MENU_EDICAO;
+    USER_COLABORADOR, 
+    USER_ADMINISTRADOR, 
+    USER_TEMPORARIO, 
+    
+    VEICULO, 
+    ITEM_MENU_EDICAO,
+    
+    PROPRIETARIO_PARA_EDICAO,
+    VEICULO_PARA_EDICAO,
+    
+    ;
     
 }

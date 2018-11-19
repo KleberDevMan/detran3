@@ -5,16 +5,17 @@
  */
 package br.com.detran3.model;
 
+import br.com.detran3.converters.SampleEntity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Proprietario.findByNome", query = "SELECT p FROM Proprietario p WHERE p.nome = :nome")
     , @NamedQuery(name = "Proprietario.findByCnh", query = "SELECT p FROM Proprietario p WHERE p.cnh = :cnh")
     , @NamedQuery(name = "Proprietario.findByCpf", query = "SELECT p FROM Proprietario p WHERE p.cpf = :cpf")})
-public class Proprietario implements Serializable {
+public class Proprietario implements Serializable,SampleEntity{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,15 +50,8 @@ public class Proprietario implements Serializable {
     private String cnh;
     @Column(name = "cpf")
     private String cpf;
-    @OneToMany(mappedBy = "proprietarioidProprietario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "proprietarioidProprietario", cascade = CascadeType.REMOVE)
     private List<Veiculo> veiculoList;
-    @OneToMany(mappedBy = "proprietarioidProprietario")
-    private List<Imagemproprietario> imagemproprietarioList;
-    @JoinColumn(name = "Endereco_idEndereco", referencedColumnName = "idEndereco")
-    @ManyToOne
-    private Endereco enderecoidEndereco;
-    @OneToMany(mappedBy = "proprietarioidProprietario")
-    private List<Contato> contatoList;
 
     public Proprietario() {
     }
@@ -107,32 +101,6 @@ public class Proprietario implements Serializable {
         this.veiculoList = veiculoList;
     }
 
-    @XmlTransient
-    public List<Imagemproprietario> getImagemproprietarioList() {
-        return imagemproprietarioList;
-    }
-
-    public void setImagemproprietarioList(List<Imagemproprietario> imagemproprietarioList) {
-        this.imagemproprietarioList = imagemproprietarioList;
-    }
-
-    public Endereco getEnderecoidEndereco() {
-        return enderecoidEndereco;
-    }
-
-    public void setEnderecoidEndereco(Endereco enderecoidEndereco) {
-        this.enderecoidEndereco = enderecoidEndereco;
-    }
-
-    @XmlTransient
-    public List<Contato> getContatoList() {
-        return contatoList;
-    }
-
-    public void setContatoList(List<Contato> contatoList) {
-        this.contatoList = contatoList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -155,7 +123,12 @@ public class Proprietario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.detran3.model.Proprietario[ idProprietario=" + idProprietario + " ]";
+        return "Proprietario{" + "idProprietario=" + idProprietario + ", nome=" + nome + ", cnh=" + cnh + ", cpf=" + cpf + ", veiculoList=" + veiculoList + '}';
     }
-    
+
+    @Override
+    public Integer getId() {
+        return idProprietario;
+    }
+
 }

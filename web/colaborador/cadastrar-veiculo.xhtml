@@ -30,17 +30,23 @@
 
                     <h:outputLabel value="Ano" />
                     <h:inputText value="#{cadastrarVeiculoBean.veiculo.ano}" />
-                    
-                    <h:outputLabel value="#{cadastrarVeiculoBean.veiculo.proprietario}"/>
-                    <h:selectOneMenu>
-                        <f:selectItems value="#{cadastrarVeiculoBean.proprietarios}"
-                                       var="proprietario"
-                                       itemLabel="#{proprietario.nome}"/>
+
+                    <h:outputLabel value="Proprietário"/>
+                    <!--                    <h:selectOneMenu value="{cadastrarVeiculoBean.veiculo.proprietarioidProprietario}">
+                                            <f:selectItems value="{cadastrarVeiculoBean.proprietarios}"
+                                                           var="proprietario"
+                                                           itemValue="{proprietario}" converter="generic"
+                                                           itemLabel="{proprietario.nome}"/>
+                                        </h:selectOneMenu>-->
+
+                    <h:selectOneMenu id="marca" value="#{cadastrarVeiculoBean.veiculo.proprietarioidProprietario}" converter="generic">
+                        <f:selectItem itemLabel="Selecione uma marca: " itemValue=""/>
+                        <f:selectItems value="#{cadastrarVeiculoBean.proprietarios}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  />
                     </h:selectOneMenu>
 
                 </h:panelGrid>
                 <h:commandButton value="Cancelar" action="#{cadastrarVeiculoBean.btnCancelar()}"/>
-                <h:commandButton value="Salvar" style="margin-right: 8px;" action="#{cadastrarVeiculoBean.btnCadastrar()}"/>
+                <h:commandButton value="#{cadastrarVeiculoBean.labelBtn}" style="margin-right: 8px;" action="#{cadastrarVeiculoBean.btnOk()}"/>
             </h:form>
         </fieldset>
 
