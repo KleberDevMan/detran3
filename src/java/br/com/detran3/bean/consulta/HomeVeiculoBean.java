@@ -2,6 +2,7 @@ package br.com.detran3.bean.consulta;
 
 import br.com.detran3.bean.AbstractBean;
 import br.com.detran3.bean.colaborador.HomeColaboradorBean;
+import br.com.detran3.dao.DAO;
 import br.com.detran3.enuns.VariaveisSessao;
 import br.com.detran3.model.Veiculo;
 import java.io.IOException;
@@ -40,6 +41,7 @@ public class HomeVeiculoBean extends AbstractBean {
     }
 
     public Veiculo getVeiculoSession() {
+        veiculoSession = new DAO<>(Veiculo.class).buscaPorId(veiculoSession.getIdVeiculo());
         return veiculoSession;
     }
     
